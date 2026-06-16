@@ -12,7 +12,7 @@ constitution lists Tab View's own non-negotiables.
 ### I. alphaTab is the renderer; we're the bridge
 Tab View MUST NOT render notation glyphs itself. alphaTab is the source of
 truth for all musical glyphs, beam grouping, stems, and bar layout. Our job
-is to translate Rocksmith XML → Guitar Pro 5 (`rs2gp.py`) and to drive
+is to translate arrangement XML → Guitar Pro 5 (`rs2gp.py`) and to drive
 alphaTab's cursor (`tickPosition`) from `audio.currentTime` using beat
 timing data the highway already exposes.
 
@@ -39,7 +39,7 @@ paths). The endpoint is publicly mounted; the guard is the single defence.
 ### V. Sloppak path is loaded lazily
 Older Slopsmith cores ship without `lib/sloppak.py`. A top-level
 `import sloppak` here would disable Tab View entirely on those installs
-(including for PSARC songs). The sloppak branch MUST `import sloppak`
+(including for archive songs). The sloppak branch MUST `import sloppak`
 inside the function and surface a `501 Not Implemented` when missing.
 
 ### VI. Visualization is opt-in (`matchesArrangement` deliberately absent)
@@ -51,7 +51,7 @@ review.
 ## Governance
 
 Amendments touching the GP5 conversion (`rs2gp.py`) must keep a back-compat
-fall-through for older Rocksmith XML formats. Amendments touching the
+fall-through for older arrangement XML formats. Amendments touching the
 factory contract must align with whatever the latest core
 `slopsmithViz_*` interface requires.
 

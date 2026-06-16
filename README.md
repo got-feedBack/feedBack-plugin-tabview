@@ -1,10 +1,10 @@
 # slopsmith-plugin-tabview
 
-A [Slopsmith](https://github.com/byrongamatos/slopsmith) plugin that renders Rocksmith CDLC arrangements as traditional guitar tablature using [alphaTab](https://www.alphatab.net/).
+A [Slopsmith](https://github.com/byrongamatos/slopsmith) plugin that renders custom-song arrangements as traditional guitar tablature using [alphaTab](https://www.alphatab.net/).
 
 ## Features
 
-- Converts Rocksmith arrangement XML to Guitar Pro 5 format on the fly
+- Converts arrangement XML to Guitar Pro 5 format on the fly
 - Renders scrolling tablature notation via alphaTab in the browser
 - Cursor syncs to the existing audio playback
 - Supports guitar and bass arrangements
@@ -39,7 +39,7 @@ Restart Slopsmith. The plugin loads automatically.
 ## How it works
 
 1. **routes.py** exposes `GET /api/plugins/tabview/gp5/{filename}?arrangement=N`
-2. **rs2gp.py** converts the Rocksmith arrangement (notes, chords, beats, tuning, techniques) into a Guitar Pro 5 file using `pyguitarpro`
+2. **rs2gp.py** converts the arrangement (notes, chords, beats, tuning, techniques) into a Guitar Pro 5 file using `pyguitarpro`
 3. **screen.js** loads alphaTab from CDN, fetches the GP5 file, renders it, and syncs the cursor to `audio.currentTime` using the beat timing data from the highway
 
 ## Files
@@ -48,5 +48,5 @@ Restart Slopsmith. The plugin loads automatically.
 |------|---------|
 | `plugin.json` | Plugin manifest |
 | `routes.py` | FastAPI endpoint serving GP5 files |
-| `rs2gp.py` | Rocksmith → Guitar Pro 5 converter |
+| `rs2gp.py` | arrangement → Guitar Pro 5 converter |
 | `screen.js` | Frontend: alphaTab integration, cursor sync, UI |

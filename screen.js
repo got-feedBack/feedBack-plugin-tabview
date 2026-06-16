@@ -1,4 +1,4 @@
-// Tab View visualization plugin — renders Rocksmith arrangements as
+// Tab View visualization plugin — renders arrangements as
 // scrolling tablature via alphaTab (https://alphatab.net/).
 //
 // Wave C (slopsmith#36): per-instance refactor. Earlier Wave B

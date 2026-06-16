@@ -1,4 +1,4 @@
-"""Convert Rocksmith arrangement data to Guitar Pro 5 format."""
+"""Convert arrangement data to Guitar Pro 5 format."""
 
 import io
 import guitarpro
@@ -11,8 +11,8 @@ GUITAR_STANDARD = [64, 59, 55, 50, 45, 40]  # E4 B3 G3 D3 A2 E2
 BASS_STANDARD = [43, 38, 33, 28]  # G2 D2 A1 E1
 
 
-def rocksmith_to_gp5(song, arrangement_index=0):
-    """Convert a Rocksmith Song arrangement to GP5 bytes."""
+def arrangement_to_gp5(song, arrangement_index=0):
+    """Convert a Song arrangement to GP5 bytes."""
     arr = song.arrangements[arrangement_index]
     is_bass = "bass" in arr.name.lower()
     num_strings = 4 if is_bass else 6
@@ -87,7 +87,7 @@ def rocksmith_to_gp5(song, arrangement_index=0):
 # ---------------------------------------------------------------------------
 
 def _parse_measures(beats):
-    """Parse Rocksmith beats into measure info dicts."""
+    """Parse arrangement beats into measure info dicts."""
     if not beats:
         return []
 

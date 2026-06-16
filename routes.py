@@ -1,4 +1,4 @@
-"""Tab View plugin — serves Guitar Pro files converted from Rocksmith arrangements."""
+"""Tab View plugin — serves Guitar Pro files converted from arrangements."""
 
 import sys
 import tempfile
@@ -6,7 +6,7 @@ from pathlib import Path
 from fastapi import FastAPI
 from fastapi.responses import Response
 
-# Ensure Rocksmith lib is importable
+# Ensure the song lib is importable
 _lib = str(Path(__file__).resolve().parent.parent.parent / "lib")
 if _lib not in sys.path:
     sys.path.insert(0, _lib)
@@ -20,13 +20,13 @@ def setup(app: FastAPI, context: dict):
     get_dlc_dir = context["get_dlc_dir"]
     get_sloppak_cache = context.get("get_sloppak_cache_dir")
 
-    from rs2gp import rocksmith_to_gp5
+    from rs2gp import arrangement_to_gp5
 
     def _song_to_gp5(song, arrangement: int) -> Response:
         if not song.arrangements:
             return Response("No arrangements found", status_code=404)
         idx = max(0, min(arrangement, len(song.arrangements) - 1))
-        gp5_bytes = rocksmith_to_gp5(song, idx)
+        gp5_bytes = arrangement_to_gp5(song, idx)
         return Response(
             content=gp5_bytes,
             media_type="application/octet-stream",
@@ -39,18 +39,18 @@ def setup(app: FastAPI, context: dict):
         if not dlc:
             return Response("DLC folder not configured", status_code=500)
 
-        psarc_path = Path(dlc) / filename
+        song_path = Path(dlc) / filename
 
         # Path traversal guard: reject any filename that resolves outside dlc.
         dlc_resolved = Path(dlc).resolve()
         try:
-            resolved = psarc_path.resolve()
+            resolved = song_path.resolve()
         except Exception:
             return Response("Path resolution failed", status_code=400)
         if resolved != dlc_resolved and dlc_resolved not in resolved.parents:
             return Response("Path traversal not allowed", status_code=400)
 
-        if not psarc_path.exists():
+        if not song_path.exists():
             return Response("File not found", status_code=404)
 
         try:
@@ -59,7 +59,7 @@ def setup(app: FastAPI, context: dict):
             # with ".sloppak" are treated as sloppaks; any other input is
             # rejected with a clear error below.
             is_sloppak = filename.lower().endswith(".sloppak") or (
-                psarc_path.is_dir() and psarc_path.name.lower().endswith(".sloppak")
+                song_path.is_dir() and song_path.name.lower().endswith(".sloppak")
             )
             if is_sloppak:
                 try:
