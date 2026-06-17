@@ -34,7 +34,7 @@ def arrangement_to_gp5(song, arrangement_index=0):
     """Convert a Song arrangement to GP5 bytes."""
     arr = song.arrangements[arrangement_index]
 
-    # path_bass is populated from the PSARC manifest and is more reliable than
+    # path_bass is populated from existing arrangement data and is more reliable than
     # name-matching alone for official DLC (which can have localised or
     # abbreviated arrangement names). Name-match is the fallback for CDLC and
     # sloppaks that don't carry path flags.
