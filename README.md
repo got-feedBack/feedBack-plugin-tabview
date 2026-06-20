@@ -1,6 +1,6 @@
 # slopsmith-plugin-tabview
 
-A [Slopsmith](https://github.com/got-feedback/feedback) plugin that renders custom-song arrangements as traditional guitar tablature using [alphaTab](https://www.alphatab.net/).
+A [Slopsmith](https://github.com/got-feedback/feedBack) plugin that renders custom-song arrangements as traditional guitar tablature using [alphaTab](https://www.alphatab.net/).
 
 ## Features
 
@@ -18,7 +18,7 @@ Copy (or symlink) this directory into your Slopsmith `plugins/` folder:
 
 ```bash
 cd /path/to/slopsmith/plugins
-git clone https://github.com/got-feedback/feedback-plugin-tabview.git tabview
+git clone https://github.com/got-feedback/feedBack-plugin-tabview.git tabview
 ```
 
 Restart Slopsmith. The plugin loads automatically.
