@@ -5,5 +5,8 @@
   "type": "visualization",
   "private": false,
   "script": "screen.js",
-  "routes": "routes.py"
+  "routes": "routes.py",
+  "category": "practice",
+  "description": "Guitar Pro-style tablature view.",
+  "icon": "assets/thumb.svg"
 }
