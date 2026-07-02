@@ -11,9 +11,14 @@ _lib = str(Path(__file__).resolve().parent.parent.parent / "lib")
 if _lib not in sys.path:
     sys.path.insert(0, _lib)
 
-# `sloppak` is loaded lazily inside the .sloppak branch below — older
+# `sloppak` is loaded lazily inside the song-package branch below — older
 # cores ship without lib/sloppak.py, and a top-level import here would
 # disable Tab View entirely on those installs.
+
+# Song-package suffixes: `.feedpak` is the current extension, `.sloppak` the
+# legacy one — same on-disk format either way (mirrors core lib/sloppak.py
+# SONG_EXTS, which can't be imported here without breaking the lazy import).
+PAK_EXTS = (".feedpak", ".sloppak")
 
 
 def setup(app: FastAPI, context: dict):
@@ -54,14 +59,15 @@ def setup(app: FastAPI, context: dict):
             return Response("File not found", status_code=404)
 
         try:
-            # Sloppak (zip-form *.sloppak or directory-form *.sloppak/): use
-            # the sloppak loader directly. Only directories whose name ends
-            # with ".sloppak" are treated as sloppaks; any other input is
+            # Song package (zip-form *.feedpak / *.sloppak or directory-form
+            # ending in either suffix): use the sloppak loader directly — it
+            # accepts both extensions. Only directories whose name ends with
+            # a package suffix are treated as packages; any other input is
             # rejected with a clear error below.
-            is_sloppak = filename.lower().endswith(".sloppak") or (
-                song_path.is_dir() and song_path.name.lower().endswith(".sloppak")
+            is_pak = filename.lower().endswith(PAK_EXTS) or (
+                song_path.is_dir() and song_path.name.lower().endswith(PAK_EXTS)
             )
-            if is_sloppak:
+            if is_pak:
                 try:
                     import sloppak as sloppak_mod
                 except ImportError:
@@ -76,9 +82,9 @@ def setup(app: FastAPI, context: dict):
                 loaded = sloppak_mod.load_song(filename, Path(dlc), cache)
                 return _song_to_gp5(loaded.song, arrangement)
 
-            # Any non-sloppak input is unsupported.
+            # Any non-package input is unsupported.
             return Response(
-                "Only .sloppak songs are supported",
+                "Only .feedpak / .sloppak songs are supported",
                 status_code=400,
             )
         except Exception as e:
