@@ -1,0 +1,12 @@
+{
+  "id": "tabview",
+  "name": "Tab View",
+  "version": "3.0.1",
+  "type": "visualization",
+  "private": false,
+  "script": "screen.js",
+  "routes": "routes.py",
+  "category": "practice",
+  "description": "Guitar Pro-style tablature view.",
+  "icon": "assets/thumb.svg"
+}
