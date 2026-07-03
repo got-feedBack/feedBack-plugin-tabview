@@ -72,7 +72,7 @@ def setup(app: FastAPI, context: dict):
                     import sloppak as sloppak_mod
                 except ImportError:
                     return Response(
-                        "Sloppak support requires a newer Slopsmith core (lib/sloppak.py). "
+                        "Sloppak support requires a newer feedBack core (lib/sloppak.py). "
                         "Update the host.",
                         status_code=501,
                     )

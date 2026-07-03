@@ -2,7 +2,7 @@
 
 ## Inheritance
 
-Slopsmith's core plugin contract governs everything in this repo (manifest,
+feedBack's core plugin contract governs everything in this repo (manifest,
 plugin context: `get_dlc_dir`, `get_sloppak_cache_dir`, asset serving, the
 `slopsmithViz_*` visualization factory contract, splitscreen mounting). This
 constitution lists Tab View's own non-negotiables.
@@ -37,7 +37,7 @@ under the configured DLC dir and reject anything that escapes (`..`, absolute
 paths). The endpoint is publicly mounted; the guard is the single defence.
 
 ### V. Sloppak path is loaded lazily
-Older Slopsmith cores ship without `lib/sloppak.py`. A top-level
+Older feedBack cores ship without `lib/sloppak.py`. A top-level
 `import sloppak` here would disable Tab View entirely on those installs
 (including for archive songs). The sloppak branch MUST `import sloppak`
 inside the function and surface a `501 Not Implemented` when missing.

@@ -1,6 +1,6 @@
 # slopsmith-plugin-tabview
 
-A [Slopsmith](https://github.com/got-feedback/feedback) plugin that renders custom-song arrangements as traditional guitar tablature using [alphaTab](https://www.alphatab.net/).
+A [feedBack](https://github.com/got-feedback/feedback) plugin that renders custom-song arrangements as traditional guitar tablature using [alphaTab](https://www.alphatab.net/).
 
 ## Features
 
@@ -14,14 +14,14 @@ A [Slopsmith](https://github.com/got-feedback/feedback) plugin that renders cust
 
 ## Installation
 
-Copy (or symlink) this directory into your Slopsmith `plugins/` folder:
+Copy (or symlink) this directory into your feedBack `plugins/` folder:
 
 ```bash
-cd /path/to/slopsmith/plugins
+cd /path/to/feedBack/plugins
 git clone https://github.com/got-feedback/feedback-plugin-tabview.git tabview
 ```
 
-Restart Slopsmith. The plugin loads automatically.
+Restart feedBack. The plugin loads automatically.
 
 ## Usage
 
@@ -33,7 +33,7 @@ Restart Slopsmith. The plugin loads automatically.
 
 ## Dependencies
 
-- **Server**: `pyguitarpro` (already included in Slopsmith's requirements)
+- **Server**: `pyguitarpro` (already included in feedBack's requirements)
 - **Client**: alphaTab is loaded from CDN on first use
 
 ## How it works
