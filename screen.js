@@ -1059,7 +1059,5 @@ function createFactory() {
 // (The static matchesArrangement is intentionally absent.)
 
 window.slopsmithViz_tabview = createFactory;
-// slopsmith→feedBack rename: host viz picker looks up `window.feedBackViz_<id>`.
-window.feedBackViz_tabview = window.slopsmithViz_tabview;
 
 })();
