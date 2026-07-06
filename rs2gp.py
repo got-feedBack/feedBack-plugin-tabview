@@ -296,7 +296,12 @@ def _make_strings(tuning, is_bass, num_strings, remap=None):
         standard = GUITAR_STANDARD
 
     if remap is not None:
-        strings = [None] * 7
+        # One slot per remapped RS string. `remap` values are gp string
+        # numbers 1..len(remap) (== num_strings), so a fixed size of 7 would
+        # leave trailing None slots when an 8-string arrangement uses ≤6
+        # distinct strings — pyguitarpro's writeTrack then dereferences
+        # None.value and 500s. Size to the actual number of filled slots.
+        strings = [None] * len(remap)
         for rs_idx, gp_str in remap.items():
             gp_idx_8 = 7 - rs_idx  # this RS string's position in the original 8-string table
             if gp_idx_8 < len(standard):
