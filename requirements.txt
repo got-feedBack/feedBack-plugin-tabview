@@ -1,0 +1,4 @@
+# Runtime deps beyond what the host app already provides.
+# PyGuitarPro: rs2gp.py builds GP5 files with the `guitarpro` package.
+# Also installed by the org reusable CI so tests importing rs2gp.py work.
+PyGuitarPro>=0.11
