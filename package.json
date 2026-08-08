@@ -1,0 +1,10 @@
+{
+  "private": true,
+  "type": "module",
+  "devDependencies": {
+    "@coderline/alphatab": "1.8.2"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.mjs"
+  }
+}
