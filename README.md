@@ -1,6 +1,6 @@
-# slopsmith-plugin-tabview
+# feedBack Plugin: Tab View
 
-A [feedBack](https://github.com/got-feedback/feedback) plugin that renders custom-song arrangements as traditional guitar tablature using [alphaTab](https://www.alphatab.net/).
+A [feedBack](https://github.com/got-feedBack/feedBack) plugin that renders custom-song arrangements as traditional guitar tablature using [alphaTab](https://www.alphatab.net/).
 
 ## Features
 
@@ -18,18 +18,19 @@ Copy (or symlink) this directory into your feedBack `plugins/` folder:
 
 ```bash
 cd /path/to/feedBack/plugins
-git clone https://github.com/got-feedback/feedback-plugin-tabview.git tabview
+git clone https://github.com/got-feedBack/feedBack-plugin-tabview.git tabview
+docker compose restart
 ```
 
-Restart feedBack. The plugin loads automatically.
+After the restart, the plugin loads automatically.
 
 ## Usage
 
 1. Open any song in the player
-2. Click the **Tab View** button in the player controls bar
+2. Open the **Visualization & quality** menu in the player rail and pick **Tab View** in the **Visualization** dropdown
 3. The highway canvas is replaced with scrolling tablature notation
 4. The cursor follows the audio playback
-5. Click **Highway** to switch back to the note highway
+5. Pick another visualization in the same dropdown to switch back
 
 ## Dependencies
 
